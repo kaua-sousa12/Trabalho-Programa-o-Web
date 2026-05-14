@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../global.css">
+</head>
+
+<body>
+    <div class="box">
+
+        <header class="main-header">
+
+            <a class="logo" href="../landing-page/index.html">TECHSNEAKERS</a>
+
+            <nav class="main-menu">
+                <a href="../login/index.html">Login</a>
+                <a href="../masculino/index.html">Masculino</a>
+                <a href="../feminino/index.html">Feminino</a>
+                <a href="../carrinho/index.html">Carrinho(0)</a>
+            </nav>
+
+        </header>
+
+        <div class="cart-page">
+            <h1 class="cart-title">SEU CARRINHO</h1>
+            <div class="cart-container">
+                <!-- LISTA DINÂMICA -->
+                <div class="items-list">
+                    <div class="cart-item">
+                        <!-- IMAGEM -->
+                        <div class="item-image">
+                            <img src="/public/assets/images/nike-dunk.webp" alt="">
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="item-info">
+                            <div class="item-header">
+                                <div>
+                                    <p class="item-name">Nike Dunk</p>
+
+                                    <p class="item-size">Tamanho: M</p>
+                                </div>
+
+                                <!-- REMOVER -->
+                                <button class="btn-delete" >
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+
+                                        <polyline points="3 6 5 6 21 6"></polyline>
+
+                                        <path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"></path>
+
+                                        <path d="M10 11v6M14 11v6"></path>
+
+                                        <path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- FOOTER -->
+                            <div class="item-footer">
+                                <div class="quantity-control">
+                                    <label class="quantity-label">Quantidade</label>
+
+                                    <div class="quantity-selector">
+                                        <button class="qty-btn">−</button>
+                                        <span class="qty-value">1</span>
+                                        <button class="qty-btn">+</button>
+                                    </div>
+                                </div>
+                                <p class="item-price">R$ 779,00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RESUMO -->
+                <aside class="order-summary">
+                    <h2 class="summary-title">Resumo do Pedido</h2>
+
+                    <div class="summary-row">
+                        <span>Subtotal (0 itens):</span>
+                        <strong>R$</strong>
+                    </div>
+
+                    <div class="summary-field">
+                        <label>Calcular Frete:</label>
+
+                        <div class="freight-input-group">
+                            <input type="text" class="freight-input" placeholder="Digite seu CEP (00000-000)">
+                            <button class="btn-calculate-freight">CALCULAR</button>
+                        </div>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Frete:</span>
+                        <strong class="freight-price">R$ 00,00 (PAC)</strong>
+                    </div>
+
+                    <div class="summary-field">
+                        <label>Forma de Pagamento:</label>
+
+                        <div class="summary-select-display">
+                            <select>
+                                <option>Pix</option>
+                                <option>Credito</option>
+                                <option>Debito</option>
+                                <option>Boleto</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="summary-total">
+
+                        <span>Total:</span>
+
+                        <strong>R$ 779,00</strong>
+
+                    </div>
+
+                    <button class="btn-checkout">FINALIZAR COMPRA</button>
+
+                    <a href="#" class="btn-continue">Continuar Comprando</a>
+                </aside>
+            </div>
+        </div>
+
+        <footer class="main-footer">
+            <span class="copyright">
+                © 2024 TECHSNEAKERS.
+                Todos os direitos reservados.
+            </span>
+
+            <nav class="footer-menu">
+                <a href="#">Contato</a>
+                <a href="#">Sobre</a>
+                <a href="#">Ajuda</a>
+            </nav>
+        </footer>
+    </div>
+</body>
+
+</html>

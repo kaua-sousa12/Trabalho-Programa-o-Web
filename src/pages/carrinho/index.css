@@ -1,0 +1,458 @@
+:root {
+    --bg-gray: #C4C4C4;
+    --white: #FFFFFF;
+    --black: #000000;
+    --input-gray: #E0E0E0;
+}
+
+@font-face {
+    font-family: "Dosis";
+    src: local("Dosis"), local("Arial");
+}
+
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 150vh;
+    margin: 0 auto;
+    background-color: #c9c9c9;
+    overflow-x: hidden;
+}
+
+.main-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-menu {
+    display: flex;
+    gap: 40px;
+}
+
+.main-menu a {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: "Dosis";
+    color: #fff;
+    font-weight: 400;
+    transition: opacity 0.3s;
+}
+
+.main-menu a:hover {
+    opacity: 0.7;
+}
+
+.main-menu .cart {
+    font-weight: 500;
+}
+
+.cart-page {
+    background-color: #c9c9c9;
+    min-height: calc(100vh - 120px);
+    padding: 48px 40px 80px;
+    font-family: 'Dosis', sans-serif;
+    box-sizing: border-box;
+    max-width: 1028px;
+    margin: 0 auto;
+}
+
+.cart-title {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #111;
+    margin: 0 0 24px 0;
+}
+
+.cart-container {
+    display: flex;
+    gap: 30px;
+    /* Aumentado gap */
+    align-items: flex-start;
+    max-width: 1000px;
+    /* Aumentado max-width */
+    margin: 0 auto;
+}
+
+.items-list {
+    width: 600px;
+    /* Aumentada largura substancialmente */
+    min-width: 0;
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    /* Aumentado padding */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Aumentado gap */
+}
+
+.cart-item {
+    border: 3px solid #000;
+    border-radius: 10px;
+    /* Ajustado border-radius */
+    padding: 18px;
+    /* Aumentado padding */
+    display: flex;
+    gap: 18px;
+    /* Aumentado gap */
+    align-items: center;
+}
+
+.item-image {
+    width: 110px;
+    min-width: 110px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.item-image {
+    width: 80px;
+    min-width: 80px;
+    height: 72px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.item-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 2px;
+}
+
+.item-size {
+    font-size: 15px;
+    color: #555;
+    margin: 0;
+}
+
+.btn-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #444;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: color 0.2s;
+}
+
+.btn-delete:hover {
+    color: #c00;
+}
+
+.item-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-label {
+    display: block;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.qty-btn {
+    background: #eee;
+    border: none;
+    width: 26px;
+    height: 24px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+    line-height: 1;
+}
+
+.qty-btn:hover {
+    background: #ddd;
+}
+
+.qty-value {
+    width: 30px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+}
+
+.item-price {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Container do Resumo do Pedido */
+.order-summary {
+    width: 380px;
+    min-width: 240px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    background: #fff;
+    border-radius: 12px;
+    padding: 45px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.summary-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 5px 0;
+}
+
+/* Linhas de Informação */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    color: #333;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0; /* Linha de separação discreta */
+}
+
+.summary-row strong {
+    font-weight: 700;
+    font-family: 'Dosis';
+}
+
+/* Campos de Seleção e Input */
+.summary-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0; /* Linha de separação discreta */
+}
+
+.summary-field label {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Dosis';
+    color: #111;
+}
+
+/* Input de Frete */
+.freight-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.freight-input {
+    flex: 1;
+    background: #ebebeb;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Dosis', sans-serif;
+}
+
+.btn-calculate-freight {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Dosis';
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Select de Pagamento */
+.summary-select-display {
+    background: #ebebeb;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.summary-select-display select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: 'Dosis', sans-serif;
+    font-size: 15px;
+    padding: 5px 0;
+    outline: none;
+}
+
+/* Seção de Total */
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-family: 'Dosis';
+    font-weight: 800;
+    color: #111;
+    padding-top: 10px;
+    border-top: 2px solid #111; /* Linha mais forte para destacar o total */
+}
+
+.summary-total strong {
+    font-size: 20px;
+    font-family: 'Dosis';
+}
+
+/* Botões de Ação */
+.btn-checkout {
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 13px;
+    font-family: 'Dosis';
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.btn-continue {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Dosis';
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+}
+
+.summary-total strong {
+    font-size: 20px;
+    font-family: 'Dosis';
+}
+
+.btn-continue:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .cart-page {
+        padding: 28px 16px 60px;
+    }
+
+    .cart-container {
+        flex-direction: column;
+    }
+
+    .order-summary {
+        width: 100%;
+    }
+}
+
+.main-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 48px;
+    margin-top: auto;
+    background-color: #000;
+}
+
+.copyright {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    font-family: 'Dosis';
+}
+
+.footer-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    transition: opacity 0.3s;
+    font-family: 'Dosis';
+}
+
+.footer-menu a:hover {
+    opacity: 0.7;
+}

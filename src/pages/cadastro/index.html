@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../global.css">
+</head>
+
+<body>
+    <div class="principal">
+        <nav class="navbar">
+            <div class="logo">TECHSNEAKERS</div>
+
+        </nav>
+
+        <main class="main-content">
+            <div class="cadastro-container">
+                <h2>Criar conta</h2>
+
+                <form novalidate onsubmit="cadastrarUsuario(event)">
+                    <div class="form-group">
+                        <input type="text" id="nome" placeholder="Nome Completo">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="telefone" placeholder="Telefone">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="profissao" placeholder="Profissão">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="senha" placeholder="Senha">
+                    </div>
+
+                    <button class="btn-cadastrar">CADASTRAR</button>
+                    <h3 id="resultado"></h3>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function cadastrarUsuario(event) {
+            event.preventDefault();
+
+            let nome = document.getElementById('nome').value;
+            let senha = document.getElementById('senha').value;
+            let telefone = document.getElementById('telefone').value;
+            let profissao = document.getElementById('profissao').value;
+            let email = document.getElementById('email').value;
+            let resultado = document.getElementById('resultado');
+
+            if (nome == '' || email == '' || senha == '' || telefone == '' || profissao == '') {
+                resultado.style.color = 'red';
+                return resultado.innerHTML = 'Preencha todos os campos corretamente';
+            }
+
+            let partes = email.split('@');
+            let dominio = partes[1];
+
+            if (partes.length != 2 || partes[0] == '' || dominio == '') {
+                resultado.style.color = 'red';
+                return resultado.innerHTML = 'Preencha o email corretamente!';
+            }
+
+            let partesdominio = dominio.split('.');
+
+            if (partesdominio.length < 2 || partesdominio.some(parte => parte == '')) {
+                resultado.style.color = 'red';
+                return resultado.innerHTML = 'Preencha o email corretamente!';
+            }
+
+            let usuario = {
+                nome: nome,
+                email: email,
+                senha: senha,
+                profissao: profissao,
+                telefone: telefone
+            };
+
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+
+            resultado.style.color = 'green';
+            resultado.innerHTML = 'Cadastro realizado com sucesso!';
+
+            window.location.href = '../login/index.html';
+        }
+    </script>
+</body>
+
+</html>
