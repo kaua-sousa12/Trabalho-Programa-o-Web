@@ -23,7 +23,7 @@ function adicionarAoCarrinho(produto) {
   salvarCarrinho(carrinho);
   atualizarContadorCarrinho();
 
-  alert("Produto adicionado ao carrinho!");
+  alert("Produto adicionado ao carrinho!!");
 }
 
 // PEGAR PRODUTOS DA PÁGINA
