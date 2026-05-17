@@ -28,6 +28,20 @@
     z-index: 10;
 }
 
+.btn-cart {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
 .logo {
     font-size: 24px;
     font-weight: bold;
@@ -325,23 +339,11 @@ a {
 
 /* --- Layout Inferior --- */
 .product-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: auto;
-}
-
-.product-details .name {
-    font-size: 12px;
-    color: #888;
-    margin: 0;
-}
-
-.product-details .price {
-    font-size: 16px;
-    font-weight: 800;
-    color: #000;
-    margin: 2px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 30px;
+  gap: 15px;
 }
 
 /* --- Frete Grátis (Bottom Right) --- */
