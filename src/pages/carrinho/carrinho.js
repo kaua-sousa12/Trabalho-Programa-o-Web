@@ -1,5 +1,7 @@
 const CHAVE_CARRINHO = "carrinho";
 
+let freteAtual = 0;
+
 // PEGAR CARRINHO
 function buscarCarrinho() {
   return JSON.parse(localStorage.getItem(CHAVE_CARRINHO)) || [];
@@ -94,6 +96,17 @@ function renderizarCarrinho() {
 
     `;
   });
+
+
+  const total = carrinho.reduce((acc, produto) => {
+    const valor = parseFloat(produto.preco.replace('R$', '').replace(',', '.').trim()); 
+    return acc + valor;
+}, 0);
+
+const valorTotal = document.getElementById('total-price');
+valorTotal.textContent = `R$ ${(total + freteAtual).toFixed(2)}`;
+
+  
 }
 // QUANDO A PÁGINA CARREGAR
 document.addEventListener("DOMContentLoaded", () => {
@@ -115,4 +128,34 @@ function atualizarContadorCarrinho() {
   const contador = document.querySelector(".main-menu a[href*='carrinho']");
   if (!contador) return;
   contador.textContent = `Carrinho(${carrinho.length})`;
+}
+
+function calcularCep(){
+  const cep = document.querySelector('.freight-input').value.replace('-', '');
+  let frete = 0;
+
+   if(cep.startsWith("0" || "1")){
+        frete = 20;
+    } else if(cep.startsWith("2" || "8")){
+        frete = 30;
+    } else if(cep.startsWith("3" || "7")){
+        frete = 50;
+    } else if(cep.startsWith("4")){
+        frete = 70;
+    } else if(cep.startsWith("5")){
+        frete = 80;
+    } else if(cep.startsWith("6")){
+        frete = 90;
+      }else{
+        frete = 100;
+    }
+
+    const valorFrete = document.querySelector(".freight-price");
+    if(valorFrete){
+      valorFrete.textContent = `R$ ${frete},00 (PAC)`;
+
+      freteAtual = frete;
+
+      renderizarCarrinho();
+    }
 }

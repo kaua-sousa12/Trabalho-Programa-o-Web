@@ -47,7 +47,7 @@
 
                         <div class="freight-input-group">
                             <input type="text" class="freight-input" placeholder="Digite seu CEP (00000-000)">
-                            <button class="btn-calculate-freight">CALCULAR</button>
+                            <button class="btn-calculate-freight" onclick="calcularCep()">CALCULAR</button>
                         </div>
                     </div>
 
@@ -71,7 +71,7 @@
 
                     <div class="summary-total">
                         <span>Total:</span>
-                        <strong>R$ 779,00</strong>
+                        <strong id ="total-price"></strong>
                     </div>
 
                     <button class="btn-checkout">FINALIZAR COMPRA</button>
@@ -82,7 +82,7 @@
             </div>
         </div>
 
-        <footer class="main-footer">
+        <footer class="main-footer">    
             <span class="copyright">
                 © 2024 TECHSNEAKERS.
                 Todos os direitos reservados.
