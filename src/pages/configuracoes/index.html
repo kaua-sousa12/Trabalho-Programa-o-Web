@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../global.css">
+</head>
+
+<body>
+    <div class="box">
+        <header class="main-header">
+            <a class="logo" href="../landing-page/index.html">TECHSNEAKERS</a>
+            <nav class="main-menu">
+                <a href="../configuracoes/index.html">Configurações</a>
+                <a href="../masculino/index.html">Masculino</a>
+                <a href="../feminino/index.html">Feminino</a>
+                <a href="../carrinho/index.html">Carrinho(0)</a>
+            </nav>
+        </header>
+
+        <main class="settings-container">
+            <h1 class="settings-title">Configurações</h1>
+
+            <!-- Card de Perfil -->
+            <section class="settings-card">
+                <h1>Informações da Conta</h1>
+                <div class="user-profile">
+                    <div class="avatar-placeholder">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="white">
+                            <path
+                                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                        </svg>
+                    </div>
+                    <div class="user-text">
+                        <h2>Kauã Sousa</h2>
+                        <p>
+                            kaua29918@gmail.com
+                            <span class="verified-badge">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                Verificados
+                            </span>
+                        </p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn-black">Alterar Dados</button>
+                        <button class="btn-red" onclick="sair()">Sair</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="settings-grid">
+                <!-- Coluna Esquerda: Dados Pessoais -->
+                <section class="settings-card">
+                    <h3>Meus Dados Pessoais</h3>
+                    <form>
+                        <div class="form-group">
+                            <label>CPF</label>
+                            <input type="text" value="123.456.789-00" readonly class="input-disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>Data de Nascimento</label>
+                            <div class="input-icon-wrapper">
+                                <input type="text" value="15/05/1995">
+                                <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <div class="input-icon-wrapper">
+                                <input type="text" value="(11) 97678-1206">
+                                <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Gênero</label>
+                            <div class="radio-group">
+                                <label class="radio-option"><input type="radio" name="gender" checked> Masculino</label>
+                                <label class="radio-option"><input type="radio" name="gender"> Feminino</label>
+                                <label class="radio-option"><input type="radio" name="gender"> Outro</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-black btn-full">SALVAR ALTERAÇÕES</button>
+                    </form>
+                </section>
+
+                <!-- Nova Coluna Direita -->
+                <div class="right-column">
+                    <!-- Seção Últimos Pedidos -->
+                    <section class="settings-card">
+                        <h3>Ultimos Pedidos</h3>
+
+                        <div class="pedido-item">
+                            <div class="pedido-header">
+                                <div class="icon-bg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="1" y="3" width="15" height="13"></rect>
+                                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                    </svg>
+                                </div>
+                                <span class="status-tag entregue">Pedido #24785 (Entregue)</span>
+                            </div>
+                            <div class="pedido-produto">
+                                <img src="/assets/images/nike-dunk.webp" alt="Nike Dunk" class="product-thumb">
+                                <div class="product-info">
+                                    <strong>R$ 779,00</strong>
+                                    <span>Nike Dunk</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pedido-item">
+                            <div class="pedido-header">
+                                <div class="icon-bg">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                        <path d="M9 16l2 2 4-4"></path>
+                                    </svg>
+                                </div>
+                                <span class="status-tag processando">Pedido #24785 (Em Processamento)</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Seção Endereços -->
+                    <section class="settings-card">
+                        <div class="header-with-icon">
+                            <h3>Endereços de Entrega</h3>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="address-box">
+                            <strong>Kauã Sousa Silva</strong><br>
+                            Rua Sinfonia Italiana, 115<br>
+                            Jardim São Bernardo
+                        </div>
+                        <button class="btn-black btn-full">Adicionar Endereço</button>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <span class="copyright">© 2024 TECHSNEAKERS. Todos os direitos reservados.</span>
+            <nav class="footer-menu">
+                <a href="#">Contato</a>
+                <a href="#">Sobre</a>
+                <a href="#">Ajuda</a>
+            </nav>
+        </footer>
+    </div>
+
+    <script>
+        function sair() {
+            let sairLogado = localStorage.removeItem('usuarioLogado');
+
+            window.location.href = '../login/index.html';
+        }
+    </script>
+</body>
+
+</html>

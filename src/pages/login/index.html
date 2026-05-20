@@ -40,9 +40,10 @@
     <script>
         function login(event) {
             event.preventDefault();
-            let usuario = JSON.parse(localStorage.getItem('usuario'));
 
-            if (!usuario) {
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+            if (usuarios.length === 0) {
                 alert('Nenhum usuário cadastrado.');
                 return;
             }
@@ -50,14 +51,11 @@
             let emailDigitado = document.getElementById('email').value;
             let senhaDigitada = document.getElementById('senha').value;
 
-            let email = usuario.email;
-            let senha = usuario.senha;
+            // Procura no array o usuário com email e senha correspondentes
+            let usuarioEncontrado = usuarios.find(u => u.email === emailDigitado && u.senha === senhaDigitada);
 
-            if (email == emailDigitado && senha == senhaDigitada) {
-                
-                // Salvar no local storage quando o usuario entrar.
-                localStorage.setItem('usuarioLogado',JSON.stringify(usuario));
-                
+            if (usuarioEncontrado) {
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado));
                 window.location.href = '../landing-page/index.html';
             } else {
                 alert('Email ou Senha incorretos.');

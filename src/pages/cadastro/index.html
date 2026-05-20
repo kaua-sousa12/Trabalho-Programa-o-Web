@@ -38,11 +38,10 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" id="senha" placeholder="Senha">
+                        <input type="password" id="senha" placeholder="Senha">
                     </div>
 
                     <button class="btn-cadastrar">CADASTRAR</button>
-                    <h3 id="resultado"></h3>
                 </form>
             </div>
         </main>
@@ -57,40 +56,31 @@
             let telefone = document.getElementById('telefone').value;
             let profissao = document.getElementById('profissao').value;
             let email = document.getElementById('email').value;
-            let resultado = document.getElementById('resultado');
 
             if (nome == '' || email == '' || senha == '' || telefone == '' || profissao == '') {
-                resultado.style.color = 'red';
-                return resultado.innerHTML = 'Preencha todos os campos corretamente';
+                return alert('Preencha todos os campos corretamente');
             }
 
             let partes = email.split('@');
             let dominio = partes[1];
 
             if (partes.length != 2 || partes[0] == '' || dominio == '') {
-                resultado.style.color = 'red';
-                return resultado.innerHTML = 'Preencha o email corretamente!';
+                return alert('Preencha o email corretamente!');
             }
 
             let partesdominio = dominio.split('.');
-
             if (partesdominio.length < 2 || partesdominio.some(parte => parte == '')) {
-                resultado.style.color = 'red';
-                return resultado.innerHTML = 'Preencha o email corretamente!';
+                return alert('Preencha o email corretamente!');
             }
 
-            let usuario = {
-                nome: nome,
-                email: email,
-                senha: senha,
-                profissao: profissao,
-                telefone: telefone
-            };
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-            localStorage.setItem('usuario', JSON.stringify(usuario));
+            if (usuarios.some(u => u.email === email)) {
+                return alert('Este e-mail já está cadastrado!');
+            }
 
-            resultado.style.color = 'green';
-            resultado.innerHTML = 'Cadastro realizado com sucesso!';
+            usuarios.push({ nome, email, senha, profissao, telefone });
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
             window.location.href = '../login/index.html';
         }

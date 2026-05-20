@@ -16,7 +16,7 @@
             <a href="../landing-page/index.html" class="logo">TECHSNEAKERS</a>
 
             <nav class="main-menu">
-                <a href="../login/index.html">Login</a>
+                <a href="../login/index.html" id="campo" >Login</a>
                 <a href="../masculino/index.html">Masculino</a>
                 <a href="../feminino/index.html">Feminino</a>
                 <a href="../carrinho/index.html">Carrinho(0)</a>
@@ -221,8 +221,24 @@
         </footer>
 
     </div>
+    <script src="../carrinho/carrinho.js"></script>
 
-<script src="../carrinho/carrinho.js"></script>
+    <script>
+        let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+        function estaLogado() {
+            let campo = document.getElementById('campo');
+
+            if (usuarioLogado) {
+                campo.textContent = 'Configurações';
+                campo.href = '../configuracoes/index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            estaLogado();
+        });
+    </script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@
         <header class="main-header">
             <a class="logo" href="../landing-page/index.html">TECHSNEAKERS</a>
             <nav class="main-menu">
-                <a href="../login/index.html">Login</a>
+                <a href="../login/index.html" id="campo">Login</a>
                 <a href="../masculino/index.html">Masculino</a>
                 <a href="../feminino/index.html">Feminino</a>
                 <a href="../carrinho/index.html">Carrinho(0)</a>
@@ -132,14 +132,13 @@
                 <div class="brands-column">
                     <div class="brand-card">
                         <div class="shop-badge">SHOP MY BRAND</div>
-                        <div class="brand-logo">
+                        <div class="card-image">
                             <img src="/public/assets/images/adidas-logo.svg" alt="Adidas">
                         </div>
                     </div>
-
                     <div class="brand-card">
                         <div class="shop-badge">SHOP MY BRAND</div>
-                        <div class="brand-logo">
+                        <div class="card-image">
                             <img src="/public/assets/images/Puma-Logo.png" alt="Puma">
                         </div>
                     </div>
@@ -272,8 +271,24 @@
             </nav>
         </footer>
     </div>
+    <script src="../carrinho/carrinho.js"></script>
 
-<script src="../carrinho/carrinho.js"></script>
+    <script>
+        let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+        function estaLogado() {
+            let campo = document.getElementById('campo');
+
+            if (usuarioLogado) {
+                campo.textContent = 'Configurações';
+                campo.href = '../configuracoes/index.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            estaLogado();
+        });
+    </script>
 </body>
 
 </html>
