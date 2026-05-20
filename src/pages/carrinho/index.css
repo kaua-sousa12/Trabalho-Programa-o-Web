@@ -456,3 +456,23 @@
 .footer-menu a:hover {
     opacity: 0.7;
 }
+.controleDeQuantidade{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.controleDeQuantidade button{
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.controleDeQuantidade span{
+  font-weight: bold;
+}

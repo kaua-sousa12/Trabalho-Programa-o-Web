@@ -54,6 +54,10 @@
             let senha = usuario.senha;
 
             if (email == emailDigitado && senha == senhaDigitada) {
+                
+                // Salvar no local storage quando o usuario entrar.
+                localStorage.setItem('usuarioLogado',JSON.stringify(usuario));
+                
                 window.location.href = '../landing-page/index.html';
             } else {
                 alert('Email ou Senha incorretos.');

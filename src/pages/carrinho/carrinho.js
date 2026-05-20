@@ -10,7 +10,7 @@ function buscarCarrinho() {
 // SALVAR CARRINHO
 function salvarCarrinho(carrinho) {
   localStorage.setItem(
-    CHAVE_CARRINHO, 
+    CHAVE_CARRINHO,
     JSON.stringify(carrinho)
   );
 }
@@ -20,7 +20,15 @@ function adicionarAoCarrinho(produto) {
 
   const carrinho = buscarCarrinho();
 
-  carrinho.push(produto);
+  const produtoExistente = carrinho.find(item => item.nome === produto.nome);
+
+  if (produtoExistente) {
+    produtoExistente.quantidade += 1;
+  }
+  else {
+    produto.quantidade = 1;
+    carrinho.push(produto);
+  }
 
   salvarCarrinho(carrinho);
   atualizarContadorCarrinho();
@@ -38,10 +46,10 @@ function configurarProdutos() {
     if (!botao) return;
 
     botao.addEventListener("click", () => {
-      const nome   = card.querySelector(".name").textContent;
-      const preco  = card.querySelector(".price").textContent;
+      const nome = card.querySelector(".name").textContent;
+      const preco = card.querySelector(".price").textContent;
       const imagem = card.querySelector(".product-image img").getAttribute("src");
-      
+
       const produto = {
         nome: nome,
         preco: preco,
@@ -58,8 +66,8 @@ function configurarProdutos() {
 // MOSTRAR CARRINHO
 function renderizarCarrinho() {
 
-  const lista = 
-  document.querySelector(".items-list");
+  const lista =
+    document.querySelector(".items-list");
 
   if (!lista) return;
 
@@ -86,6 +94,19 @@ function renderizarCarrinho() {
             ${produto.preco}
           </p>
           
+          <div class="controleDeQuantidade">
+          <button onclick="diminuirQuantidade(${index})">
+          -
+          </button>
+
+          <span>
+          ${produto.quantidade}
+          </span>
+          
+          <button onclick="aumentarQuantidade(${index})">
+          +
+          </button>
+          </div>
 
         </div>
         <button class="btn-delete" onclick="removerDoCarrinho(${index})">
@@ -99,14 +120,14 @@ function renderizarCarrinho() {
 
 
   const total = carrinho.reduce((acc, produto) => {
-    const valor = parseFloat(produto.preco.replace('R$', '').replace(',', '.').trim()); 
-    return acc + valor;
-}, 0);
+    const valor = parseFloat(produto.preco.replace('R$', '').replace(',', '.').trim());
+    return acc + (valor * produto.quantidade);
+  }, 0);
 
-const valorTotal = document.getElementById('total-price');
-valorTotal.textContent = `R$ ${(total + freteAtual).toFixed(2)}`;
+  const valorTotal = document.getElementById('total-price');
+  valorTotal.textContent = `R$ ${(total + freteAtual).toFixed(2)}`;
 
-  
+
 }
 // QUANDO A PÁGINA CARREGAR
 document.addEventListener("DOMContentLoaded", () => {
@@ -130,32 +151,82 @@ function atualizarContadorCarrinho() {
   contador.textContent = `Carrinho(${carrinho.length})`;
 }
 
-function calcularCep(){
+// Aumentar Quantidade do produto no carrinho
+function aumentarQuantidade(index) {
+  const carrinho = buscarCarrinho();
+  carrinho[index].quantidade += 1;
+  salvarCarrinho(carrinho);
+  renderizarCarrinho();
+  atualizarContadorCarrinho();
+}
+
+// Diminuir a quantidade do carrinho
+function diminuirQuantidade(index) {
+  const carrinho = buscarCarrinho();
+  carrinho[index].quantidade -= 1;
+  if (carrinho[index].quantidade <= 0) {
+    removerDoCarrinho(index);
+    return;
+  }
+  salvarCarrinho(carrinho);
+  renderizarCarrinho();
+  atualizarContadorCarrinho();
+}
+
+function calcularCep() {
   const cep = document.querySelector('.freight-input').value.replace('-', '');
   let frete = 0;
 
-   if(cep.startsWith("0" || "1")){
-        frete = 20;
-    } else if(cep.startsWith("2" || "8")){
-        frete = 30;
-    } else if(cep.startsWith("3" || "7")){
-        frete = 50;
-    } else if(cep.startsWith("4")){
-        frete = 70;
-    } else if(cep.startsWith("5")){
-        frete = 80;
-    } else if(cep.startsWith("6")){
-        frete = 90;
-      }else{
-        frete = 100;
-    }
+  if (cep.startsWith("0" || "1")) {
+    frete = 20;
+  } else if (cep.startsWith("2" || "8")) {
+    frete = 30;
+  } else if (cep.startsWith("3" || "7")) {
+    frete = 50;
+  } else if (cep.startsWith("4")) {
+    frete = 70;
+  } else if (cep.startsWith("5")) {
+    frete = 80;
+  } else if (cep.startsWith("6")) {
+    frete = 90;
+  } else {
+    frete = 100;
+  }
 
-    const valorFrete = document.querySelector(".freight-price");
-    if(valorFrete){
-      valorFrete.textContent = `R$ ${frete},00 (PAC)`;
+  const valorFrete = document.querySelector(".freight-price");
+  if (valorFrete) {
+    valorFrete.textContent = `R$ ${frete},00 (PAC)`;
 
-      freteAtual = frete;
+    freteAtual = frete;
 
-      renderizarCarrinho();
-    }
+    renderizarCarrinho();
+  }
+}
+
+function finalizarCompra() {
+
+  const usuarioLogado = localStorage.getItem("usuarioLogado");
+
+  if (!usuarioLogado) {
+    alert("Você precisa estar logado para finalizar a compra!");
+
+    window.location.href = "../login/index.html";
+    return;
+  }
+  const carrinho = buscarCarrinho();
+
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio!");
+    return;
+  }
+
+  if(freteAtual === 0){
+    alert("Calcule o frete antes de finalizar a compra!");
+    return;
+  }
+
+  alert("Compra realizada com sucesso!!");
+  localStorage.removeItem(CHAVE_CARRINHO);
+  renderizarCarrinho();
+  atualizarContadorCarrinho();
 }
