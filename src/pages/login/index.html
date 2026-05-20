@@ -37,6 +37,8 @@
         </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         function login(event) {
             event.preventDefault();
@@ -44,7 +46,11 @@
             let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
             if (usuarios.length === 0) {
-                alert('Nenhum usuário cadastrado.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Nenhum usuário cadastro.'
+                });
                 return;
             }
 
@@ -58,7 +64,11 @@
                 localStorage.setItem('usuarioLogado', JSON.stringify(usuarioEncontrado));
                 window.location.href = '../landing-page/index.html';
             } else {
-                alert('Email ou Senha incorretos.');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Email ou senha inválidos.'
+                });
             }
         }
     </script>

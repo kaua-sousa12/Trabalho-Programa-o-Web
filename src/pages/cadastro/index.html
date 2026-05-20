@@ -46,6 +46,7 @@
             </div>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         function cadastrarUsuario(event) {
@@ -58,25 +59,41 @@
             let email = document.getElementById('email').value;
 
             if (nome == '' || email == '' || senha == '' || telefone == '' || profissao == '') {
-                return alert('Preencha todos os campos corretamente');
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Preencha todos os campos corretamente!'
+                });
             }
 
             let partes = email.split('@');
             let dominio = partes[1];
 
             if (partes.length != 2 || partes[0] == '' || dominio == '') {
-                return alert('Preencha o email corretamente!');
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Preencha o email corretamente!'
+                });
             }
 
             let partesdominio = dominio.split('.');
             if (partesdominio.length < 2 || partesdominio.some(parte => parte == '')) {
-                return alert('Preencha o email corretamente!');
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Preencha o email corretamente!'
+                });
             }
 
             let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
             if (usuarios.some(u => u.email === email)) {
-                return alert('Este e-mail já está cadastrado!');
+                return Swal.fire({
+                    icon: 'error',
+                    title: 'Erro',
+                    text: 'Este email está cadastrado.'
+                });
             }
 
             usuarios.push({ nome, email, senha, profissao, telefone });
