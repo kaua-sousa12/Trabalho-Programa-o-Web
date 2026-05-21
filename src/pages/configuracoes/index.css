@@ -401,6 +401,58 @@ input[type="text"] {
     font-size: 16px;
 }
 
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#salvarEndereco {
+    background: black;
+    color: white;
+}
+
+#fecharModal {
+    background: #ddd;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
     .settings-grid {

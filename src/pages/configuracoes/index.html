@@ -35,9 +35,10 @@
                         </svg>
                     </div>
                     <div class="user-text">
-                        <h2>Kauã Sousa</h2>
+                        <h2 id="nomeUsuario"></h2>
+
                         <p>
-                            kaua29918@gmail.com
+                            <span id="emailUsuario"></span>
                             <span class="verified-badge">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -67,7 +68,7 @@
                         <div class="form-group">
                             <label>Data de Nascimento</label>
                             <div class="input-icon-wrapper">
-                                <input type="text" value="15/05/1995">
+                                <input type="text" id="dataNascimento">
                                 <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -78,7 +79,7 @@
                         <div class="form-group">
                             <label>Telefone</label>
                             <div class="input-icon-wrapper">
-                                <input type="text" value="(11) 97678-1206">
+                                <input type="text" id="telefone">
                                 <svg class="edit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
@@ -89,12 +90,16 @@
                         <div class="form-group">
                             <label>Gênero</label>
                             <div class="radio-group">
-                                <label class="radio-option"><input type="radio" name="gender" checked> Masculino</label>
-                                <label class="radio-option"><input type="radio" name="gender"> Feminino</label>
-                                <label class="radio-option"><input type="radio" name="gender"> Outro</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="masculino">
+                                    Masculino</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="feminino">
+                                    Feminino</label>
+                                <label class="radio-option"><input type="radio" name="gender" value="outro">
+                                    Outro</label>
                             </div>
                         </div>
-                        <button type="submit" class="btn-black btn-full">SALVAR ALTERAÇÕES</button>
+                        <button type="button" onclick="salvarDados()" class="btn-black btn-full" id="btSalvarDados">SALVAR
+                            ALTERAÇÕES</button>
                     </form>
                 </section>
 
@@ -153,12 +158,13 @@
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </div>
-                        <div class="address-box">
-                            <strong>Kauã Sousa Silva</strong><br>
-                            Rua Sinfonia Italiana, 115<br>
-                            Jardim São Bernardo
+                        <div class="address-box" id="caixaEndereco">
+                            Nenhum endereço cadastrado
                         </div>
-                        <button class="btn-black btn-full">Adicionar Endereço</button>
+
+                        <button type="button" class="btn-black btn-full" id="abrirModal" onclick="abrirModal()">
+                            Adicionar Endereço
+                        </button>
                     </section>
                 </div>
             </div>
@@ -173,15 +179,24 @@
             </nav>
         </footer>
     </div>
-    <script type="module" src="../carrinho/carrinho.js"></script>
-    
-    <script>
-        function sair() {
-            let sairLogado = localStorage.removeItem('usuarioLogado');
 
-            window.location.href = '../login/index.html';
-        }
-    </script>
+    <div class="modal" id="modalEndereco">
+        <div class="modal-content">
+            <h2>Endereço</h2>
+
+            <input type="text" id="cep" placeholder="CEP">
+            <input type="text" id="rua" placeholder="Rua">
+            <input type="text" id="numeroCasa" placeholder="Número da casa">
+
+            <div class="modal-buttons">
+                <button type="button" id="salvarEndereco" onclick="salvarEndereco()">Salvar</button>
+                <button type="button" id="fecharModal" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
