@@ -195,7 +195,7 @@ function carregarPedidos() {
             <div class="pedido-produto">
                 <img src="${produto.imagem}" alt="${produto.nome}" class="product-thumb">
                 <div class="product-info">
-                    <strong>${produto.preco}</strong>
+                    <strong>R$ ${pedido.total.toFixed(2)}</strong>
                     <span>${produto.nome}</span>
                     <small>${pedido.data}</small>
                 </div>

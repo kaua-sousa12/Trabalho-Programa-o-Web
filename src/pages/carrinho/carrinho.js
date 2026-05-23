@@ -187,7 +187,7 @@ function diminuirQuantidade(index) {
 function calcularCep() {
 
   const cep = document.querySelector('.freight-input').value.replace('-', '');
-  
+
   let frete = 0;
 
   if (cep.startsWith("0") || cep.startsWith("1")) {
@@ -250,10 +250,22 @@ function finalizarCompra() {
     usuario.ultimosPedidos = [];
   }
 
+  const totalProdutos = carrinho.reduce((acc, produto) => {
+    const valor = parseFloat(
+      produto.preco.replace('R$', '').replace(',', '.').trim()
+    );
+
+    return acc + (valor * produto.quantidade);
+  }, 0);
+
+  const totalPedido = totalProdutos + freteAtual;
+
   const novoPedido = {
     id: Date.now(),
     status: 'Finalizado',
     produtos: carrinho,
+    frete: freteAtual,
+    total: totalPedido,
     data: new Date().toLocaleDateString('pt-BR')
   };
 
