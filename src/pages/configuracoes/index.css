@@ -200,7 +200,7 @@ input[type="text"] {
 /* Grid com altura igual nas duas colunas */
 .settings-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.4fr 0.9fr;
     gap: 24px;
     align-items: stretch;
 }

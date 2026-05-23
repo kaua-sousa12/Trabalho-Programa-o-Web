@@ -4,6 +4,7 @@ function inicializarPagina() {
     carregarDados();
     carregarEndereco();
     carregarPerfil();
+    carregarPedidos();
 }
 
 // Carregar o perfil do usuario
@@ -156,6 +157,53 @@ function limparInputsEndereco() {
     document.getElementById('numeroCasa').value = '';
 }
 
+
+function carregarPedidos() {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+    const usuarioLogadoObj = JSON.parse(localStorage.getItem('usuarioLogado'));
+
+    const usuario = usuarios.find(u => u.email === usuarioLogadoObj.email);
+
+    const listaPedidos = document.getElementById('listaPedidos');
+
+    if (!usuario.ultimosPedidos || usuario.ultimosPedidos.length === 0) {
+        listaPedidos.innerHTML = '<p>Nenhum pedido realizado ainda.</p>';
+        return;
+    }
+
+    listaPedidos.innerHTML = '';
+
+    usuario.ultimosPedidos.forEach(pedido => {
+        const produto = pedido.produtos[0];
+
+        listaPedidos.innerHTML += `
+        <div class="pedido-item">
+            <div class="pedido-header">
+                <div class="icon-bg">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="3" width="15" height="13"></rect>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                        <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                        <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    </svg>
+                </div>
+                <span class="status-tag processando">
+                    Pedido #${pedido.id} (${pedido.status})
+                </span>
+            </div>
+            <div class="pedido-produto">
+                <img src="${produto.imagem}" alt="${produto.nome}" class="product-thumb">
+                <div class="product-info">
+                    <strong>${produto.preco}</strong>
+                    <span>${produto.nome}</span>
+                    <small>${pedido.data}</small>
+                </div>
+            </div>
+        </div>
+        `;
+    });
+}
 
 function sair() {
     localStorage.removeItem('usuarioLogado');

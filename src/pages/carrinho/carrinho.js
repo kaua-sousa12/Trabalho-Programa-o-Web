@@ -187,7 +187,7 @@ function diminuirQuantidade(index) {
 function calcularCep() {
 
   const cep = document.querySelector('.freight-input').value.replace('-', '');
-
+  
   let frete = 0;
 
   if (cep.startsWith("0") || cep.startsWith("1")) {
@@ -221,42 +221,45 @@ function calcularCep() {
 
 function finalizarCompra() {
 
-  const usuarioLogado = localStorage.getItem("usuarioLogado");
+  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
   if (!usuarioLogado) {
-
     Swal.fire({
       icon: 'warning',
       title: 'Você precisa estar logado!',
       text: 'Faça login para finalizar a compra.'
     });
-
-    window.location.href = "../login/index.html";
     return;
   }
 
   const carrinho = buscarCarrinho();
 
   if (carrinho.length === 0) {
-
     Swal.fire({
       icon: 'error',
       title: 'Seu carrinho está vazio!',
       text: 'Seu carrinho está vazio, coloque produtos antes de finalizar compra.'
     });
-
     return;
   }
 
-  if (freteAtual === 0) {
+  const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+  const usuario = usuarios.find(user => user.email === usuarioLogado.email);
 
-    Swal.fire({
-      icon: 'warning',
-      title: 'Calcule o frete antes de finalizar!'
-    });
-
-    return;
+  if (!usuario.ultimosPedidos) {
+    usuario.ultimosPedidos = [];
   }
+
+  const novoPedido = {
+    id: Date.now(),
+    status: 'Finalizado',
+    produtos: carrinho,
+    data: new Date().toLocaleDateString('pt-BR')
+  };
+
+  usuario.ultimosPedidos.unshift(novoPedido);
+
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
   Swal.fire({
     icon: 'success',
@@ -265,7 +268,6 @@ function finalizarCompra() {
   });
 
   localStorage.removeItem(CHAVE_CARRINHO);
-
   renderizarCarrinho();
   atualizarContadorCarrinho();
 }

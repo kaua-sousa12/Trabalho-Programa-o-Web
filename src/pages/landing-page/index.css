@@ -452,60 +452,6 @@ button:focus-visible {
     object-fit: contain;
 }
 
-/* ========== NEWSLETTER ========== */
-
-.newsletter-section {
-    background-color: #c4c4c4;
-    padding: 60px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.newsletter-container {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.newsletter-label {
-    font-size: 32px;
-    color: #333;
-    font-weight: 500;
-}
-
-.newsletter-form {
-    display: flex;
-    gap: 40px;
-}
-
-.newsletter-input {
-    width: 450px;
-    height: 55px;
-    padding: 0 15px;
-    border: 1px solid #000;
-    font-size: 20px;
-    outline: none;
-}
-
-.newsletter-button {
-    background-color: #000;
-    color: #fff;
-    border: none;
-    padding: 0 45px;
-    height: 55px;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.newsletter-button:hover {
-    background-color: #222;
-}
-
 /* ========== FOOTER ========== */
 
 .main-footer {
@@ -559,4 +505,87 @@ button:focus-visible {
         text-align: center;
         padding: 30px 20px;
     }
+}
+
+.sobre-marca {
+    background-color: #1a1a1a;
+    padding: 60px 40px;
+    margin-bottom: 20px;
+}
+
+.sobre-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.sobre-texto {
+    flex: 1;
+    color: #ffffff;
+}
+
+.sobre-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #b3b3b3;
+    text-transform: uppercase;
+}
+
+.sobre-texto h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 12px 0 16px;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.sobre-texto p {
+    font-size: 0.95rem;
+    color: #cccccc;
+    line-height: 1.7;
+    max-width: 420px;
+}
+
+.sobre-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 32px;
+    border-top: 1px solid #333333;
+    padding-top: 24px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat strong {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.stat span {
+    font-size: 0.8rem;
+    color: #3c3c3c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sobre-imagem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.sobre-imagem img {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    object-fit: cover;
+    filter: brightness(0.9);
 }
