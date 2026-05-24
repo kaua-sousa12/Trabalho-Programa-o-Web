@@ -441,14 +441,21 @@
     <script src="../carrinho/carrinho.js" type="module"></script>
     <script>
         let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+
         function estaLogado() {
             let campo = document.getElementById('campo');
+
             if (usuarioLogado) {
                 campo.textContent = 'Configurações';
                 campo.href = '../configuracoes/index.html';
             }
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            estaLogado();
+        });
     </script>
+
 </body>
 
 </html>
