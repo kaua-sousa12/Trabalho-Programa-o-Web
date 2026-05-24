@@ -28,7 +28,6 @@
     overflow-x: hidden;
 }
 
-
 .main-header {
     width: 100%;
     display: flex;
@@ -58,7 +57,7 @@
 
 .main-menu a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     font-family: "Dosis";
     color: #fff;
     font-weight: 400;

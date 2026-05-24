@@ -59,7 +59,7 @@ button:focus-visible {
 
 .main-menu a {
   text-decoration: none;
-  font-size: 20px;
+  font-size: 17px;
   font-family: "Dosis";
   color: #fff;
   font-weight: 400;
@@ -418,6 +418,7 @@ button:focus-visible {
   position: relative;
   background-color: #eee;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .news-item img {

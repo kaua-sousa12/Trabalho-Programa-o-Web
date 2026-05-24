@@ -1,5 +1,3 @@
-
-
 function inicializarPagina() {
     carregarDados();
     carregarEndereco();
