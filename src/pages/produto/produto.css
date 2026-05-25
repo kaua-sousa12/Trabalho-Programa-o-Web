@@ -1,0 +1,231 @@
+* {
+    font-family: 'Dosis', sans-serif;
+    box-sizing: border-box;
+}
+ 
+/* ========== BOX ========== */
+.box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: #c9c9c9;
+    overflow-x: hidden;
+}
+ 
+/* ========== HEADER ========== */
+.main-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a;
+    padding: 30px 50px;
+    border-bottom: 1px solid #333;
+    z-index: 10;
+}
+ 
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+    text-decoration: none;
+}
+ 
+.main-menu {
+    display: flex;
+    gap: 40px;
+}
+ 
+.main-menu a {
+    text-decoration: none;
+    font-size: 17px;
+    color: #fff;
+    font-weight: 400;
+    transition: opacity 0.3s;
+}
+ 
+.main-menu a:hover {
+    opacity: 0.7;
+}
+ 
+/* ========== FOOTER ========== */
+.main-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 48px;
+    margin-top: auto;
+    background-color: #000;
+}
+ 
+.copyright {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+}
+ 
+.footer-menu {
+    display: flex;
+    gap: 20px;
+}
+ 
+.footer-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+    transition: opacity 0.3s;
+}
+ 
+.footer-menu a:hover {
+    opacity: 0.7;
+}
+ 
+/* ========== PRODUTO PAGE ========== */
+.produto-page {
+    flex: 1;
+    padding: 60px 48px;
+    background-color: #c9c9c9;
+}
+ 
+.produto-container {
+    display: flex;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 24px;
+    padding: 48px;
+    align-items: center;
+}
+ 
+.produto-imagem-wrapper {
+    flex: 1;
+    background-color: #f5f5f5;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    min-height: 320px;
+}
+ 
+.produto-imagem-wrapper img {
+    max-width: 100%;
+    height: 280px;
+    object-fit: contain;
+}
+ 
+.produto-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+ 
+.produto-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin: 0;
+}
+ 
+.produto-info #produto-preco {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+ 
+.produto-tamanho {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+ 
+.produto-tamanho label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #555;
+    text-transform: uppercase;
+}
+ 
+.produto-tamanho select {
+    padding: 12px;
+    font-size: 15px;
+    font-family: 'Dosis', sans-serif;
+    border: 2px solid #000;
+    border-radius: 10px;
+    width: 180px;
+    cursor: pointer;
+    background-color: #fff;
+}
+ 
+.produto-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+ 
+.btn-checkout {
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 13px;
+    font-family: 'Dosis';
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+}
+ 
+.btn-checkout:hover {
+    background: #222;
+}
+ 
+.btn-voltar {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+ 
+.btn-voltar:hover {
+    color: #111;
+}
+ 
+/* ========== RESPONSIVO ========== */
+@media (max-width: 768px) {
+    .produto-container {
+        flex-direction: column;
+        padding: 28px;
+    }
+ 
+    .produto-page {
+        padding: 30px 20px;
+    }
+ 
+    .main-header {
+        padding: 20px 24px;
+    }
+ 
+    .main-footer {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 30px 20px;
+    }
+}

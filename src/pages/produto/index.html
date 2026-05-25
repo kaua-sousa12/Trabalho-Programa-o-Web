@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto — TECHSNEAKERS</title>
+    <link rel="stylesheet" href="produto.css">
+    <link rel="stylesheet" href="../global.css">
+</head>
+<body>
+    <div class="box">
+        <header class="main-header">
+            <a class="logo" href="../landing-page/index.html">TECHSNEAKERS</a>
+            <nav class="main-menu">
+                <a href="../login/index.html" id="campo">Login</a>
+                <a href="../masculino/index.html">Masculino</a>
+                <a href="../feminino/index.html">Feminino</a>
+                <a href="../carrinho/index.html">Carrinho(0)</a>
+            </nav>
+        </header>
+ 
+        <main class="produto-page">
+            <div class="produto-container">
+ 
+                <div class="produto-imagem-wrapper">
+                    <img id="produto-img" src="" alt="">
+                </div>
+ 
+                <div class="produto-info">
+                    <h1 id="produto-nome"></h1>
+                    <p id="produto-preco"></p>
+ 
+                    <div class="produto-tamanho">
+                        <label for="tamanho">Tamanho:</label>
+                        <select id="tamanho">
+                            <option value="">Selecione</option>
+                            <option>37</option>
+                            <option>38</option>
+                            <option>39</option>
+                            <option>40</option>
+                            <option>41</option>
+                            <option>42</option>
+                            <option>43</option>
+                            <option>44</option>
+                        </select>
+                    </div>
+ 
+                    <div class="produto-botoes">
+                        <button class="btn-checkout" onclick="adicionarProduto()">ADICIONAR AO CARRINHO</button>
+                        <a class="btn-voltar" href="javascript:history.back()">← Voltar</a>
+                    </div>
+                </div>
+ 
+            </div>
+        </main>
+ 
+        <footer class="main-footer">
+            <span class="copyright">© 2026 TECHSNEAKERS. Todos os direitos reservados.</span>
+            <nav class="footer-menu">
+                <a href="#">Contato</a>
+                <a href="#">Sobre</a>
+                <a href="#">Ajuda</a>
+            </nav>
+        </footer>
+    </div>
+ 
+    <script type="module" src="../carrinho/carrinho.js"></script>
+    <script src="produto.js"></script>
+    <script>
+        let usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+        function estaLogado() {
+            let campo = document.getElementById('campo');
+            if (usuarioLogado && campo) {
+                campo.textContent = 'Configurações';
+                campo.href = '../configuracoes/index.html';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => { estaLogado(); });
+    </script>
+</body>
+</html>
