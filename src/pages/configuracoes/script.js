@@ -8,8 +8,7 @@ function inicializarPagina() {
 // Carregar o perfil do usuario
 function carregarPerfil() {
 
-    const usuarioSalvo = JSON.parse(localStorage.getItem('usuarios'));
-    const usuario = usuarioSalvo[0];
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     const nomeUsuario = document.getElementById('nomeUsuario');
     const emailUsuario = document.getElementById('emailUsuario');
@@ -21,8 +20,7 @@ function carregarPerfil() {
 // carregar os dados do usuario
 function carregarDados() {
     const genero = document.querySelectorAll('input[name="gender"]');
-    const usuarioSalvo = JSON.parse(localStorage.getItem('usuarios'));
-    const usuario = usuarioSalvo[0];
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     const data = document.getElementById('dataNascimento');
     const telefone = document.getElementById('telefone');
@@ -44,7 +42,7 @@ function salvarDados() {
 
     const usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
-    const usuario = usuarios[0];
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     const telefone = document.getElementById('telefone').value;
 
@@ -57,12 +55,18 @@ function salvarDados() {
             generoSelecionado = radio.value;
         }
     });
-    usuario.telefone = telefone;
-    usuario.dataNascimento = dataNascimento;
-    usuario.genero = generoSelecionado;
+    usuarioLogado.telefone = telefone;
+    usuarioLogado.dataNascimento = dataNascimento;
+    usuarioLogado.genero = generoSelecionado;
 
+    const indiceUsuario = usuarios.findIndex(
+        u => u.email === usuarioLogado.email
+    );
+
+    usuarios[indiceUsuario] = usuarioLogado;
 
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado));
 
     Swal.fire({
         icon: 'success',
@@ -88,9 +92,7 @@ function fecharModal() {
 
 function carregarEndereco() {
 
-    const usuarios = JSON.parse(localStorage.getItem('usuarios'));
-
-    const usuario = usuarios[0];
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     if (!usuario.endereco) return;
 
@@ -114,9 +116,7 @@ function salvarEndereco() {
         });
         return;
     }
-    const usuarioSalvo = JSON.parse(localStorage.getItem('usuarios'));
-
-    const usuario = usuarioSalvo[0];
+    const usuario = JSON.parse(localStorage.getItem('usuarioLogado'));
 
     const endereco = {
         cep: cep.value,
@@ -127,8 +127,8 @@ function salvarEndereco() {
     usuario.endereco = endereco;
 
     //Atualiza o localStorage
-    localStorage.setItem('usuarios', JSON.stringify(usuarioSalvo)
-    );
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+    
     mostrarEndereco(endereco);
     limparInputsEndereco();
     fecharModal();
